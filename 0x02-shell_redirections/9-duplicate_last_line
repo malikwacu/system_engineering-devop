@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
+#!/bin/bash
 grep . iacta | tail -n 1 >> iacta
