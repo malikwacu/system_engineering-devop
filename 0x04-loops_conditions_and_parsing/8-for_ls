@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# This script lists non-hidden files and shows the part after the first dash
+# This script lists non-hidden files and prints only the part after the first dash (if any)
 
 for file in *; do
-  name="${file#*-}"
-  if [ "$name" = "$file" ]; then
-    echo "$file"
-  else
-    echo "$name"
+  if [ -f "$file" ]; then
+    if [[ "$file" == *-* ]]; then
+      echo "${file#*-}"
+    else
+      echo "$file"
+    fi
   fi
 done
