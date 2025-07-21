@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# This script lists visible files and prints the part after the first dash (if any)
+# This script displays names of files in the current directory, trimming names after the first dash if present
 
-for file in *; do
-  # skip if no files exist
-  [ -e "$file" ] || continue
+for file in *
+do
+  # Skip hidden files
+  [[ "$file" == .* ]] && continue
 
-  # Only handle regular files
-  if [ -f "$file" ]; then
-    # Strip text before the first dash if it exists
+  # If file contains a dash, cut from first dash
+  if [[ "$file" == *-* ]]; then
     echo "${file#*-}"
+  else
+    echo "$file"
   fi
 done
